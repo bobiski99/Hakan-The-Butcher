@@ -19,7 +19,7 @@ public class GunManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey("space") && Time.time >= timeToFire)
+        if (Time.time >= timeToFire)
         {
             timeToFire = Time.time + 1 / timeRate;
             Fire();
