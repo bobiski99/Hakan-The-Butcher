@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Target
+  - Undefined
+  - Ammo
+  - GetBack
   layers:
   - Default
   - TransparentFX

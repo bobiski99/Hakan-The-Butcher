@@ -15,25 +15,20 @@ public class CleaverThrow : MonoBehaviour
         CleaverPosition = Cleaver.transform.localPosition;
         CleaverRotation = Cleaver.transform.localRotation;
 
-
         rb = Cleaver.GetComponent<Rigidbody>();
         rb.isKinematic = true;
     }
 
     void Update()
     {
-        if ( Input.GetMouseButtonDown(1))
+        if (Cleaver.transform.parent == Player.transform)
         {
-            Throw();
+            if (Input.GetMouseButtonDown(1))
+            {
+                Throw();
+            }
         }
 
-        if (Input.GetKeyDown("r"))
-        {
-            rb.isKinematic = true;
-            Cleaver.transform.SetParent(Player.transform);
-            Cleaver.transform.localPosition = CleaverPosition;
-            Cleaver.transform.localRotation = CleaverRotation;
-        }
     }
 
     void Throw()
@@ -43,5 +38,13 @@ public class CleaverThrow : MonoBehaviour
         rb.AddForce(transform.forward * 100f, ForceMode.Impulse);
     }
 
+    public void GetBack()
+    {
+        rb.isKinematic = true;
+        Cleaver.transform.SetParent(Player.transform);
+        Cleaver.transform.localPosition = CleaverPosition;
+        Cleaver.transform.localRotation = CleaverRotation;
+    }
     
+
 }
