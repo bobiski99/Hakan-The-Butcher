@@ -29,7 +29,7 @@ public class MovementM : MonoBehaviour
 
         m_playerMovement = new Vector3(m_horizontal, 0f, m_vertical) * PlayerSpeed;
         m_charCont.Move(m_playerMovement);
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("left shift"))
         {
             Dash();
         }
