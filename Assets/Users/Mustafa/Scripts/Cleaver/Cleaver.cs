@@ -5,15 +5,16 @@ using UnityEngine;
 public class Cleaver : MonoBehaviour
 {
     private Rigidbody rb;
-    public SphereCollider colliderC;
+    public GameObject getbackObject;
+    private CleaverThrow cleaverThrow;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cleaverThrow = FindObjectOfType<CleaverThrow>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        print(other.name);
 
         if (other.CompareTag("Ammo"))
         {
@@ -21,12 +22,13 @@ public class Cleaver : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
-            colliderC.radius = 0.1F;
+            getbackObject.SetActive(false);
+            cleaverThrow.GetBack();
         }
         else
         {
+            getbackObject.SetActive(true);
             rb.isKinematic = true;
-            colliderC.radius = 2.5F;
         }
     }
 }
